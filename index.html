@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagesh Prajapati - Software Engineer</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #334e68;
+            --accent-color: #30c1a9;
+            --text-color: #333;
+            --light-text: #777;
+            --bg-color: #f8f9fa;
+            --card-bg: #fff;
+            --border-color: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a:focus {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .profile h1 {
+            margin-top: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .profile p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            max-width: 800px;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover, .contact-item a:focus {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover, .skill-card:focus-within {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li:before {
+            content: '•';
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            top: 15px;
+            right: -10px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover, .project-card:focus-within {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover, .project-links a:focus {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .education-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card h4 {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover, .btn:focus {
+            background-color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Accessibility */
+        a:focus, button:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                background-color: var(--primary-color);
+                padding: 1rem;
+                z-index: 1;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+                top: 15px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">NP</div>
+                <button class="burger" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">☰</button>
+                <ul id="nav-links" class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="profile">
+                <h1>Nagesh Prajapati</h1>
+                <p>Senior Software Engineer</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span aria-hidden="true">📱</span>
+                        <a href="tel:+919722675854" aria-label="Phone: +91 9722 675 854">+91 9722 675 854</a>
+                    </div>
+                    <div class="contact-item">
+                        <span aria-hidden="true">📧</span>
+                        <a href="mailto:nagesh.prajapati.3107@gmail.com" aria-label="Email: nagesh.prajapati.3107@gmail.com">nagesh.prajapati.3107@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span aria-hidden="true">📍</span>
+                        <span>Ahmedabad, Gujarat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    Experienced Android developer with 9 years of expertise in designing, developing, and maintaining mobile applications. 
+                    Demonstrated proficiency in Android (Java, Kotlin), Flutter, and cross-platform development. 
+                    Skilled at analyzing system requirements, UI/UX design, and troubleshooting complex applications. 
+                    Committed to building efficient, scalable, and high-quality mobile solutions.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="section" style="background-color: #f1f5f9;">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Programming Languages</h3>
+                        <ul class="skill-list">
+                            <li>Kotlin</li>
+                            <li>Java</li>
+                            <li>Dart</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Frameworks & Tools</h3>
+                        <ul class="skill-list">
+                            <li>Jetpack Compose</li>
+                            <li>Android SDK</li>
+                            <li>Retrofit</li>
+                            <li>Dagger/Hilt</li>
+                            <li>Coroutines</li>
+                            <li>Kotlin Multiplatform (KMP)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Database & Storage</h3>
+                        <ul class="skill-list">
+                            <li>SQLite</li>
+                            <li>Room</li>
+                            <li>Firebase</li>
+                            <li>Shared Preferences</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Version Control</h3>
+                        <ul class="skill-list">
+                            <li>Git</li>
+                            <li>GitHub</li>
+                            <li>Bitbucket</li>
+                            <li>Azure</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>CI/CD & Testing</h3>
+                        <ul class="skill-list">
+                            <li>Jenkins</li>
+                            <li>Fastlane</li>
+                            <li>Code Magic</li>
+                            <li>Unit Testing (JUnit, Espresso)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Other Skills</h3>
+                        <ul class="skill-list">
+                            <li>Agile/Scrum</li>
+                            <li>MVVM</li>
+                            <li>Clean Architecture</li>
+                            <li>REST APIs</li>
+                            <li>Play Store app Publishing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Senior Engineer (Level 2)</h3>
+                            <h4>E-Infochips | 2020 - Present</h4>
+                            <ul>
+                                <li>Developed and maintained multiple Android applications with high performance and scalability.</li>
+                                <li>Collaborated with cross-functional teams to define, design, and ship new features.</li>
+                                <li>Ensured bug-free applications by implementing unit testing and debugging strategies.</li>
+                                <li>Led a team of developers and provided mentorship to junior engineers.</li>
+                                <li>Optimized applications for better performance, responsiveness, and battery efficiency.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Sr. Android Developer</h3>
+                            <h4>Royale Cheese Pvt Ltd | 2016 - 2020</h4>
+                            <ul>
+                                <li>Spearheaded multiple Android development projects, delivering high-quality applications.</li>
+                                <li>Coordinated with designers, backend developers, and testers to achieve project goals.</li>
+                                <li>Integrated third-party APIs such as payment gateways, analytics, and push notifications.</li>
+                                <li>Conducted code reviews to ensure maintainable and scalable codebase.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section" style="background-color: #f1f5f9;">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Echonous Kosmos</h3>
+                        <p>
+                            Kosmos brings the capabilities of powerful high-end cart systems and engineering to a sophisticated
+                            handheld mobile solution to support point-of-care physicians with diagnostic quality images. AI features
+                            include AI FAST, Auto EF and AI Trio Guidance, Grading, Labeling of optimal imaging planes.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://echonous.com/" target="_blank" rel="noopener" aria-label="Visit Echonous Website - Opens in a new tab">Echonous Website</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.echonous.kosmosapp" target="_blank" rel="noopener" aria-label="Kosmos Ultrasound on Play Store">Play Store</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>WellNest</h3>
+                        <p>
+                            Capture, share and report ECG data seamlessly in conjunction with Wellnest 12L. 
+                            Wellnest Pro has been designed and developed by experts, taking into consideration the standard 
+                            workflow of medical organizations and professionals.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.wellnest.tech/" target="_blank" rel="noopener" aria-label="WellNest Website">Website</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.rc.wellnestpro" target="_blank" rel="noopener" aria-label="WellNest 12L on Play Store">Play Store</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Saiyarti</h3>
+                        <p>
+                            Saiyarti is a unique breakthrough solution for the Kuwait Market. A fully automated platform 
+                            for obtaining and renewing your cars Third Party Liability policies. It has one goal – "make getting insured easy".
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.saiyarti.com" target="_blank" rel="noopener" aria-label="Saiyarti Website">Website</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.rc.saiyarti" target="_blank" rel="noopener" aria-label="Saiyarti on Play Store">Play Store</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>e-SmartPark</h3>
+                        <p>
+                            e-SmartPark helps to find available parking spaces and pay for parking easily with navigation, alerts, 
+                            and remote extension—all from your vehicle. This app was built using Flutter framework with Azure backend API.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://smartpark-frontend-qa.azurewebsites.net/" target="_blank" rel="noopener" aria-label="e-SmartPark Website">Website</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>Weeve</h3>
+                        <p>
+                            Weeve is a team of digital loyalty specialists. We understand the importance of recognising and rewarding 
+                            what matters the most, customer relationships. A comprehensive loyalty app for busy people.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.weeve.tt/" target="_blank" rel="noopener" aria-label="Weeve Website">Website</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.rc.weeveuser" target="_blank" rel="noopener" aria-label="Weeve on Play Store">Play Store</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <h3>GitHub Projects</h3>
+                        <ul>
+                            <li><strong>Kotlin Multiplatform App:</strong> NoteKMMApp</li>
+                            <li><strong>Flutter Chat App:</strong> WeChat</li>
+                            <li><strong>Android Kotlin App:</strong> HulkApp</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/nageshSp3107" target="_blank" rel="noopener" aria-label="View GitHub Projects">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education & Certifications</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <h3>Bachelor of Engineering</h3>
+                        <h4>Electronics & Communication</h4>
+                        <p>Gujarat Technological University (GTU)</p>
+                        <p>2011 - 2015</p>
+                    </div>
+                    <div class="education-card">
+                        <h3>Higher Secondary (HSC)</h3>
+                        <p>GHSEB</p>
+                        <p>2011</p>
+                    </div>
+                    <div class="education-card">
+                        <h3>Secondary School (SSC)</h3>
+                        <p>GHSEB</p>
+                        <p>2009</p>
+                    </div>
+                    <div class="education-card">
+                        <h3>Certifications</h3>
+                        <ul>
+                            <li>Jetpack Compose Crash course for Android with Kotlin (Udemy)</li>
+                            <li>Dart and Flutter: The Complete Developer's Guide (Udemy)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section" style="background-color: #f1f5f9;">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title">Get In Touch</h2>
+                <p>Feel free to contact me for any work or collaboration opportunities.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:nagesh.prajapati.3107@gmail.com?subject=Position for Android Developer&body=Hi%20Nagesh,%0D%0A%0D%0AI%20wanted%20to%20get%20in%20touch..." class="btn">Send Email</a>
+                    <a href="tel:+919722675854" class="btn">Call Me</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Nagesh Prajapati. All Rights Reserved.</p>
+            <div style="margin-top: 1rem;">
+                <p>Languages: English, Hindi, Gujarati</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navigation menu for mobile
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
