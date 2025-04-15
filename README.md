@@ -39,8 +39,8 @@ Feel free to reach out via [Email](mailto:nagesh.prajapati.3107@gmail.com) or [P
 ### Desktop View
 ![Desktop Preview](Portfolio_1.png)
 
-### Skill View
-![Skill Preview](Portfolio_2.png)
+### Skills View
+![Skills Preview](Portfolio_2.png)
 
 ### Experience Section
 ![Experience Preview](Portfolio_3.png)
