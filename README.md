@@ -2,7 +2,7 @@
 
 🚀 A personal portfolio website showcasing my professional experience, skills, projects, and education as a Senior Android Engineer.
 
-🔗 **Live Website**: [https://yourusername.github.io/nagesh-portfolio](https://yourusername.github.io/nagesh-portfolio)
+🔗 **Live Website**: [https://nageshSp3107.github.io/nagesh-portfolio](https://nageshSp3107.github.io/nagesh-portfolio)
 
 ---
 
