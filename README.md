@@ -36,11 +36,17 @@ Feel free to reach out via [Email](mailto:nagesh.prajapati.3107@gmail.com) or [P
 
 ## 📸 Preview
 
-![Screenshot of the portfolio website]
-1. Portfolio_1.png
-2. Portfolio_2.png
-3. Portfolio_3.png
-4. Portfolio_4.png
+### Desktop View
+![Desktop Preview](Portfolio_1.png)
+
+### Skill View
+![Skill Preview](Portfolio_2.png)
+
+### Experience Section
+![Experience Preview](Portfolio_3.png)
+
+### Projects Section
+![Projects Section Preview](Portfolio_4.png)
 
 ---
 
